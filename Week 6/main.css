@@ -1,0 +1,27 @@
+
+
+
+.link{
+    color:brown;
+
+}
+
+#ID1{
+    font-variant: small-caps;
+
+    font-size: medium;
+
+    font-kerning: unset;
+
+    font-style: italic;
+}
+
+#ID2{
+    font-variant:initial;
+
+    font-size: large;
+
+    font-stretch: extra-condensed;
+
+    font-weight: bold;
+}
