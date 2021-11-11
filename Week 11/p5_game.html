@@ -1,0 +1,87 @@
+<html>
+    <head>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+<script>
+ var x=0, y=-50, mvmt=3, ob1x=0, ob1mvmt=2, ob2x=0, ob2mvmt=3, ob3x=0, ob3mvmt=4, mousex=0, mousey=0;
+
+function setup() {createCanvas(400, 800);}
+
+function draw() {
+    
+
+  background(220, 340, 500);
+
+  
+  fill(24,200,29);
+  rect(-ob1x+-150, 250, 300, 10);
+  rect(-ob1x+375, 250, 400, 10);  
+  ob1x+=ob1mvmt;
+  if(ob1x>150||ob1x<0)
+    {ob1mvmt=-1*ob1mvmt;} 
+  
+  rect(-ob2x+-50, 400, 225, 10);
+  rect(-ob2x+350, 400, 200, 10);
+  ob2x+=ob2mvmt;
+  if(ob2x>150||ob2x<0)
+    {ob2mvmt=-1*ob2mvmt;} 
+  
+  rect(-ob3x+-0, 550, 175, 10);
+  rect(-ob3x+350, 550, 200, 10);
+  ob3x+=ob3mvmt;
+  if(ob3x>150||ob3x<0)
+    {ob3mvmt=-1*ob3mvmt;} 
+  
+
+  fill(100,100,900);
+  circle(x+150, y+150, 100);
+  fill(220, 340, 500);
+  circle(x+135, y+130, 10);
+  circle(x+175, y+130, 10);
+  rect(x+150, y+135, 10, 30);
+  point(x+175, y+150);
+  point(x+176, y+150);
+  point(x+176, y+151);
+  point(x+175, y+151);
+  line(x+135, y+175, x+175, y+175);
+  x+=mvmt;
+  
+  if(x>200||x<-100)
+    {mvmt=-1*mvmt;} 
+  
+  if(keyIsDown(32))
+   {y+=4}
+  
+  if(y>600)
+  {y-=10;}
+  
+    circle(mousex, mousey, 30);  
+  
+      if(y > 500)
+    {
+        fill(0);
+        textSize(26);
+        text("You Win!", 150, 525);
+    }
+  
+    
+   
+  fill(0, 0, 0);
+  textSize(20);
+  text('Use Space Bar to get to bottom!', 10, 20);
+}
+
+   function mousePressed()
+    {mousex = mouseX;
+      mousey = mouseY;}
+    
+    </script>
+
+    </head>
+
+
+    <body>
+
+    </body>
+
+</html>
