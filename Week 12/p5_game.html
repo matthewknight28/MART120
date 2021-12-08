@@ -4,8 +4,30 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
 <script>
  var x=0, y=-50, mvmt=3, ob1x=0, ob1mvmt=2, ob2x=0, ob2mvmt=3, ob3x=0, ob3mvmt=4, mousex=0, mousey=0;
+ 
+var shapeXs = [];
+var shapeYs = [];
+var shapeSizes = [];
 
-function setup() {createCanvas(400, 800);}
+var shapeSpeed = [];
+
+
+
+function setup() {
+  createCanvas(400, 800);
+
+    // get a random speed when the it first starts
+    for (var i = 0; i<100; i++)
+    {
+        shapeSizes[i] = random(1,30);
+        shapeXs[i] = random(1,400);
+        shapeYs[i] = random(1, 800);
+    };
+
+    for(var m=0; m<3; m++){
+      shapeSpeed[m] = random(1,4);
+    };
+}
 
 function draw() {
     
@@ -14,11 +36,18 @@ function draw() {
 
   title(20,10,20);
   fill(24,200,29);
-  createPlatform1(250);
-  createPlatform2(400);
-  createPlatform3(550);
+  
+  for (var m=0; m<shapeSpeed.length; m++) {
+    createPlatform1(250, shapeSpeed[m]);
+    createPlatform2(400, shapeSpeed[m]);
+    createPlatform3(550, shapeSpeed[m]);
+  }
+
+
   createSprite();
-  createCircle(30);
+  for (var i=0; i<shapeXs.length; i++) {
+  createCircle( shapeXs[i], shapeYs[i], shapeSizes[i]);
+  }
   youWin(500);
   if(x>200||x<-100)
     {mvmt=-1*mvmt;} 
@@ -53,36 +82,36 @@ function createSprite()
   point(x+175, y+151);
   line(x+135, y+175, x+175, y+175);}
 
-function createPlatform1(y)
+function createPlatform1(y, speed)
   {  fill(24,200,29);
   rect(-ob1x+-150, y, 300, 10);
   rect(-ob1x+375, y, 400, 10);  
-  ob1x+=ob1mvmt;
+  ob1x+=speed;
   if(ob1x>150||ob1x<0)
-    {ob1mvmt=-1*ob1mvmt;} }
+    {speed=-1*speed;} }
 
-function createPlatform2(y)
+function createPlatform2(y, speed)
   {  fill(24,200,29);
     rect(-ob2x+-50, y, 225, 10);
   rect(-ob2x+350, y, 200, 10);
-  ob2x+=ob2mvmt;
+  ob2x+=speed;
   if(ob2x>150||ob2x<0)
-    {ob2mvmt=-1*ob2mvmt;} }
+    {speed=-1*speed;} }
 
-function createPlatform3(y)
+function createPlatform3(y, speed)
   {  fill(24,200,29);
     rect(-ob3x+-0, y, 175, 10);
   rect(-ob3x+350, y, 200, 10);
   ob3x+=ob3mvmt;
   if(ob3x>150||ob3x<0)
-    {ob3mvmt=-1*ob3mvmt;} }
+    {speed=-1*speed;} }
 
 function mousePressed()
   {mousex = mouseX;
   mousey = mouseY;}
 
-function createCircle(size)
-{circle(mousex, mousey, size);}
+function createCircle(x, y, size)
+{circle(x, y, size);}
 
 function youWin(goal)
 {if(y > goal)
