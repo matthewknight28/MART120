@@ -1,0 +1,76 @@
+<html>
+    <head>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+<script>
+var circlex = 50,
+  circley = 240,
+  treex = 500,
+  speed = 2,
+  score = 0,
+  counter = 0;
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  frameRate(30);
+  
+  background(200, 300, 200);
+  fill(0, 102, 153);
+  textSize(32);
+  text("score = " + score, 250, 30);
+  fill(200, 100, 20);
+  rect(0, 250, 800);
+  rect(treex, 200, 30, 50);
+  fill(80, 300, 300);
+  circle(circlex, circley, 20);
+
+  if (treex < -15) {
+    treex = 610;
+  } else {
+    treex -= speed;
+  }
+
+  if (treex < -15) {
+    speed++;
+
+    if (circley <= 140) {
+      score += 1;
+    }}
+
+    counter++;
+    console.log("hi" + counter);
+ 
+    if (circley <= 140) {
+      if (counter == 40) {
+        circley += 100;
+      }
+    }
+}
+
+
+
+function keyPressed() {
+  if (keyCode === 32) {
+    if (circley>=240){
+    
+    circley -= 100;
+    counter=0;
+    }
+  }
+}
+
+
+    
+    </script>
+
+    </head>
+
+
+    <body>
+
+    </body>
+
+</html>
